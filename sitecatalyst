@@ -1,0 +1,6 @@
+#!/bin/sh
+
+dir=sitecatalyst.dir
+$dir/init
+$dir/load
+$dir/view

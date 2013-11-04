@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use diagnostics;
+
+sub lit {
+    my $txt= `cat comscore.dir/$_[0]`;
+    chomp $txt;
+    return $txt;
+}
+
+print <<___
+gannett_ut.add_viewer(function(gdata) {
+console.log('sitecatalyst link');
+s_ut.tl(self,'o','no link_name');
+}
+___

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cat <<___
+window.utag= {
+    track: function(method, data) {utag[method](data);},
+    load: function(data) {gannett_ut.load(data);},
+    view: function(data) {gannett_ut.view(data);}
+}
+___

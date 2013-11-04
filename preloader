@@ -1,0 +1,51 @@
+#!/bin/sh
+
+
+
+cat <<___
+self.s_ut= {}; // settealium currrently assumes omniture
+self.gannett_ut= {
+    extensions: [],
+    loaders: [],
+    viewers: [],
+    extend: function(gdata) {
+console.log('extend');
+        for (var j=0; j < gannett_ut.extensions.length; j++) {
+            // try {
+                gdata= gannett_ut.extensions[j](gdata);
+            // } catch () {}
+        }
+        return gdata;
+    },
+    load: function(gdata) {
+console.log('load');
+        for (var j= 0; j < gannett_ut.loaders.length; j++) {
+            // try {
+                gannett_ut.loaders[j](gdata);
+            // } catch (e) {}
+        }
+    },
+    view: function(gdata) {
+console.log('view');
+        for (var j= 0; j < gannett_ut.viewers.length; j++) {
+            // try {
+                gannett_ut.viewers[j](gdata);
+            // } catch (e) {}
+        }
+    },
+    add_extension: function(handler) {
+console.log('add_extension');
+        gannett_ut.extensions.push(function(gdata) {
+            return handler(gdata) || gdata;
+        });
+    },
+    add_loader: function(handler) {
+console.log('add_loader');
+        gannett_ut.loaders.push(handler);
+    },
+    add_viewer: function(handler) {
+console.log('add_viewer');
+        gannett_ut.viewers.push(handler);
+    }
+};
+___
